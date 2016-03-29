@@ -12,6 +12,13 @@ import edu.princeton.cs.StdOut;
 
 public class GraphGenerator {
 
+    /**
+     * 
+     * @param in the text file
+     * @param delimiter separates the strings by whatever the delimiter is.
+     * @return the graph
+     */
+    
     public static Graph read(In in, String delimiter) {
         Graph G = new Graph();
         while (in.hasNextLine()) {
@@ -25,6 +32,11 @@ public class GraphGenerator {
         return G;
     }
 
+    /**
+     * 
+     * @param args args[0] is the name of the text file. args[1] is the delimiter where it splits the strings 
+     */
+    
     public static void main(String[] args) {
         String filename  = args[0];
         String delimiter = args[1];
