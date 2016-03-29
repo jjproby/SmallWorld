@@ -85,25 +85,32 @@ public class PathFinder {
 
 
     public static void main(String[] args) {
-        String filename  = args[0];
-        String delimiter = args[1];
+        String filename  = "movies.txt";
+        String delimiter = "/";
         
         System.out.println( filename );
         System.out.println( ">" + delimiter + "<" );
         In in = new In(filename); 
         Graph G = GraphGenerator.read(in, delimiter);
-        String s = args[2];
+        String s = "Bacon, Kevin";
         PathFinder pf = new PathFinder(G, s);
-        
+        In in2 = new In(filename);
+        while (in2.hasNextLine()) {
+            String line = in2.readLine();
+            String[] names2 = line.split(delimiter);
+            for (int i = 1; i < names2.length; i++) {
+                pf.report(names2[i]);
+            }
+        }
         
         /*pf.report( "JFK" );
         pf.report( "MCO" );
         pf.report( "ATL" );
-        pf.report( "DEN" ); */
+        pf.report( "DEN" ); 
         pf.report( "Smith, Will (I)" );
         pf.report( "Radcliffe, Daniel");
-        pf.report("Cage, Nicolas");
-        pf.report("Jackson, Samuel L.");
+        pf.report("Cage, Nicolas"); 
+        pf.report("Jackson, Samuel L."); */
         
     } // main( String [] )
 
