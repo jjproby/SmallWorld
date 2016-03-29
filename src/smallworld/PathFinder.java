@@ -96,8 +96,14 @@ public class PathFinder {
         PathFinder pf = new PathFinder(G, s);
         
         
-        pf.report( "JFK" );
+        /*pf.report( "JFK" );
         pf.report( "MCO" );
+        pf.report( "ATL" );
+        pf.report( "DEN" ); */
+        pf.report( "Smith, Will (I)" );
+        pf.report( "Radcliffe, Daniel");
+        pf.report("Cage, Nicolas");
+        pf.report("Jackson, Samuel L.");
         
     } // main( String [] )
 
@@ -107,7 +113,7 @@ public class PathFinder {
             for (String v : this.pathTo(airport)) {
                 StdOut.println("   " + v);
             }
-            StdOut.println("distance " + this.distanceTo(airport));
+            StdOut.println("distance " + (this.distanceTo(airport)/2));
     } // report( PathFinder, String )
     
 } // PathFinder
