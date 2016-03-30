@@ -1,8 +1,6 @@
 package smallworld;
 
 import edu.princeton.cs.In;
-import edu.princeton.cs.StdDraw;
-import edu.princeton.cs.StdIn;
 import edu.princeton.cs.StdOut;
 import java.util.ArrayList;
 import java.util.List;
