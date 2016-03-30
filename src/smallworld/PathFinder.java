@@ -3,41 +3,29 @@ package smallworld;
 import edu.princeton.cs.In;
 import edu.princeton.cs.StdIn;
 import edu.princeton.cs.StdOut;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
-/******************************************************************************
- *  Compilation:  javac PathFinder.java
- *  Execution:    java Pathfinder input.txt delimiter source
- *  Dependencies: Queue.java Stack.java Graph.java
- *  
- *  Runs breadth first search algorithm from source s on a graph G.
- *  After preprocessing the graph, can process shortest path queries
- *  from s to any vertex t.
+/**
+ * ****************************************************************************
+ * Compilation: javac PathFinder.java Execution: java Pathfinder input.txt
+ * delimiter source Dependencies: Queue.java Stack.java Graph.java
  *
- *  % java PathFinder routes.txt " " JFK
- *  LAX
- *     JFK
- *     ORD
- *     PHX
- *     LAX
- *  distance 3
- *  MCO
- *     JFK
- *     MCO
- *  distance 1
- *  DFW
- *     JFK
- *     ORD
- *     DFW
- *  distance 2
+ * Runs breadth first search algorithm from source s on a graph G. After
+ * preprocessing the graph, can process shortest path queries from s to any
+ * vertex t.
  *
- ******************************************************************************/
-
+ * % java PathFinder routes.txt " " JFK LAX JFK ORD PHX LAX distance 3 MCO JFK
+ * MCO distance 1 DFW JFK ORD DFW distance 2
+ *
+ *****************************************************************************
+ */
 public class PathFinder {
 
     // prev[v] = previous vertex on shortest path from s to v
     // dist[v] = length of shortest path from s to v
-    private ST<String, String>  prev = new ST<String, String>();
+    private ST<String, String> prev = new ST<String, String>();
     private ST<String, Integer> dist = new ST<String, Integer>();
 
     // run BFS in graph G from given source vertex s
@@ -47,7 +35,7 @@ public class PathFinder {
         Queue<String> q = new Queue<String>();
         q.enqueue(s);
         dist.put(s, 0);
-        
+
         // repeated remove next vertex v from queue and insert
         // all its neighbors, provided they haven't yet been visited
         while (!q.isEmpty()) {
@@ -69,7 +57,9 @@ public class PathFinder {
 
     // return the length of the shortest path from v to s
     public int distanceTo(String v) {
-        if (!hasPathTo(v)) return Integer.MAX_VALUE;
+        if (!hasPathTo(v)) {
+            return Integer.MAX_VALUE;
+        }
         return dist.get(v);
     }
 
@@ -83,26 +73,29 @@ public class PathFinder {
         return path;
     }
 
-
     public static void main(String[] args) {
-        String filename  = "movies.txt";
+        String filename = "movies.txt";
         String delimiter = "/";
-        
-        System.out.println( filename );
-        System.out.println( ">" + delimiter + "<" );
-        In in = new In(filename); 
+
+        System.out.println(filename);
+        System.out.println(">" + delimiter + "<");
+        In in = new In(filename);
         Graph G = GraphGenerator.read(in, delimiter);
         String s = "Bacon, Kevin";
         PathFinder pf = new PathFinder(G, s);
         In in2 = new In(filename);
+        List<String> usedNames = new ArrayList<>();
         while (in2.hasNextLine()) {
             String line = in2.readLine();
             String[] names2 = line.split(delimiter);
             for (int i = 1; i < names2.length; i++) {
-                pf.report(names2[i]);
+                if (!usedNames.contains(names2[i])) {
+                    pf.report(names2[i]);
+                    usedNames.add(names2[i]);
+                }
             }
         }
-        
+
         /*pf.report( "JFK" );
         pf.report( "MCO" );
         pf.report( "ATL" );
@@ -111,16 +104,18 @@ public class PathFinder {
         pf.report( "Radcliffe, Daniel");
         pf.report("Cage, Nicolas"); 
         pf.report("Jackson, Samuel L."); */
-        
+
     } // main( String [] )
 
+    private void report(String airport) {
 
-    private void report( String airport ) {
+        if (this.distanceTo(airport) / 2 < 2) {
 
             for (String v : this.pathTo(airport)) {
                 StdOut.println("   " + v);
-            }
-            StdOut.println("distance " + (this.distanceTo(airport)/2));
+            }//for
+            StdOut.println("distance " + (this.distanceTo(airport) / 2));
+        }//if
     } // report( PathFinder, String )
-    
+
 } // PathFinder
