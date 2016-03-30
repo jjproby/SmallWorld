@@ -1,10 +1,12 @@
 package smallworld;
 
 import edu.princeton.cs.In;
+import edu.princeton.cs.StdDraw;
 import edu.princeton.cs.StdIn;
 import edu.princeton.cs.StdOut;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Stack;
 
 /**
@@ -81,41 +83,64 @@ public class PathFinder {
         System.out.println(">" + delimiter + "<");
         In in = new In(filename);
         Graph G = GraphGenerator.read(in, delimiter);
-        String s = "Bacon, Kevin";
+        Scanner findName = new Scanner(System.in);
+        System.out.println("Enter an actor name. Last name, First name: ");
+        String s = findName.nextLine();
         PathFinder pf = new PathFinder(G, s);
-        In in2 = new In(filename);
-        List<String> usedNames = new ArrayList<>();
-        while (in2.hasNextLine()) {
-            String line = in2.readLine();
-            String[] names2 = line.split(delimiter);
-            for (int i = 1; i < names2.length; i++) {
-                if (!usedNames.contains(names2[i])) {
-                    pf.report(names2[i]);
-                    usedNames.add(names2[i]);
-                }
-            }
-        }
+        System.out.println("Use all actors or one actor? 1 for one, 2 for all");
+        int answer = findName.nextInt();
+        switch (answer) {
+            case 1:
+                Scanner otherName = new Scanner(System.in);
+                System.out.println("Enter another actor name. Last name, First name: ");
+                String actor = otherName.nextLine();
+                pf.reportOne(actor);
+                break;
+            case 2:
+                System.out.println("Enter the maximum distance between the actors: ");
+                int distance = findName.nextInt();
+                In in2 = new In(filename);
+                List<String> usedNames = new ArrayList<>();
+                while (in2.hasNextLine()) {
+                    String line = in2.readLine();
+                    String[] names2 = line.split(delimiter);
+                    for (int i = 1; i < names2.length; i++) {
+                        if (!usedNames.contains(names2[i])) {
+                            pf.reportAll(names2[i], distance);
+                            usedNames.add(names2[i]);
+                        }//if
+                    }//for
+                }//while
+                break;
+        }//switch
+    }//main
 
-        /*pf.report( "JFK" );
-        pf.report( "MCO" );
-        pf.report( "ATL" );
-        pf.report( "DEN" ); 
-        pf.report( "Smith, Will (I)" );
-        pf.report( "Radcliffe, Daniel");
-        pf.report("Cage, Nicolas"); 
-        pf.report("Jackson, Samuel L."); */
+        /* TEST NAMES
+        Smith, Will (I);
+        Radcliffe, Daniel;
+        Cage, Nicolas; 
+        Jackson, Samuel L.
+        Bloom, Orlando
+        Wood, Elijah
+        */
 
-    } // main( String [] )
+    private void reportAll(String actor, int goodDistance) {
 
-    private void report(String airport) {
+        if (this.distanceTo(actor) / 2 <= goodDistance) {
 
-        if (this.distanceTo(airport) / 2 < 2) {
-
-            for (String v : this.pathTo(airport)) {
+            for (String v : this.pathTo(actor)) {
                 StdOut.println("   " + v);
             }//for
-            StdOut.println("distance " + (this.distanceTo(airport) / 2));
+            StdOut.println("distance " + (this.distanceTo(actor) / 2));
         }//if
+    } // report( PathFinder, String )
+
+    private void reportOne(String actor) {
+
+        for (String v : this.pathTo(actor)) {
+            StdOut.println("   " + v);
+        }//for
+        StdOut.println("distance " + (this.distanceTo(actor) / 2));
     } // report( PathFinder, String )
 
 } // PathFinder
