@@ -122,6 +122,12 @@ public class PathFinder {
         Wood, Elijah
         */
 
+    /**
+     * 
+     * @param actor The actor that is getting pathed from
+     * @param goodDistance The maximum distance between the actors
+     */
+    
     private void reportAll(String actor, int goodDistance) {
 
         if (this.distanceTo(actor) / 2 <= goodDistance) {
@@ -133,6 +139,11 @@ public class PathFinder {
         }//if
     } // report( PathFinder, String )
 
+    /**
+     * 
+     * @param actor The actor that is getting pathed from
+     */
+    
     public void reportOne(String actor) {
 
         for (String v : this.pathTo(actor)) {
