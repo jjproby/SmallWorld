@@ -133,7 +133,7 @@ public class PathFinder {
         }//if
     } // report( PathFinder, String )
 
-    private void reportOne(String actor) {
+    public void reportOne(String actor) {
 
         for (String v : this.pathTo(actor)) {
             StdOut.println("   " + v);

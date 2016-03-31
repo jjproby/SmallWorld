@@ -19,6 +19,8 @@ public class IndexGraph {
         In in = new In(args[0]);
         String delimiter = args[1];
         Graph G = new Graph(in, delimiter);
+        String s = args[2];
+        PathFinder pf = new PathFinder(G, s);
         while (!StdIn.isEmpty()) {
             String v = StdIn.readLine();
             if (v.equals("quit")) {
@@ -26,6 +28,7 @@ public class IndexGraph {
             }//if
             for (String w : G.adjacentTo(v)) {
                 StdOut.println(" " + w);
+                pf.reportOne(w);
             }//for
         }//while
     }//main
