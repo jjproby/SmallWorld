@@ -23,7 +23,7 @@ public class IndexGraph {
             }//if
             for (String w : G.adjacentTo(v)) {
                 StdOut.println(" " + w);
-                pf.reportOne(w);
+                //pf.reportOne(w);
             }//for
         }//while
     }

@@ -16,13 +16,11 @@ import java.util.Scanner;
  * @author Jordan
  */
 public class ActorGraph {
-    
-    public void connectActors(Graph graph) {
-        
-    }//connectActors
-    
 
-    
+    public void connectActors(Graph graph) {
+
+    }//connectActors
+
     public static void main(String[] args) {
         In filename = new In(args[0]);
         String delimiter = args[1];
@@ -34,5 +32,11 @@ public class ActorGraph {
         String firstActor = name.nextLine();
         String[] actorPath = pf.reportArray(firstActor);
         System.out.println(Arrays.toString(actorPath));
-        }//main
-    }//ActorGraph
+        for (int i = 0; i < 5; i++) {
+            for (String w : G.adjacentTo(actorPath[i])) {
+                StdOut.println(" " + w);
+            }//for
+        }//for
+
+    }//main
+}//ActorGraph
