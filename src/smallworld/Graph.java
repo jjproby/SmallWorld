@@ -152,6 +152,17 @@ public class Graph {
         }
         return s.toString();
     }
+    
+    public void writeDotFile() {
+        for ( String u : this.vertices() ) {
+            for (String v : this.vertices() ) {
+                if( (u.compareTo(v) < 0) && (this.hasEdge(u, v))) {
+                    
+                    System.out.println( u + "->" + v + ";");
+                }//if
+            }//for
+        }///for
+    }//writeDotFile
 
     public static void main(String[] args) {
         Graph G = new Graph();
@@ -174,7 +185,7 @@ public class Graph {
             }
             StdOut.println();
         }
-
+        G.writeDotFile();
     }
 
 }
