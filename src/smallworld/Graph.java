@@ -154,6 +154,7 @@ public class Graph {
     }
     
     public void writeDotFile() {
+        System.out.println("digraph G {");
         for ( String u : this.vertices() ) {
             for (String v : this.vertices() ) {
                 if( (u.compareTo(v) < 0) && (this.hasEdge(u, v))) {
@@ -162,6 +163,7 @@ public class Graph {
                 }//if
             }//for
         }///for
+        System.out.println("}");
     }//writeDotFile
 
     public static void main(String[] args) {
