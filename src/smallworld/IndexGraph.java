@@ -15,12 +15,7 @@ import edu.princeton.cs.StdOut;
  */
 public class IndexGraph {
     
-    public static void main(String[] args) {
-        In in = new In(args[0]);
-        String delimiter = args[1];
-        Graph G = new Graph(in, delimiter);
-        String s = args[2];
-        PathFinder pf = new PathFinder(G, s);
+    public static void findIndex(Graph G, PathFinder pf) {
         while (!StdIn.isEmpty()) {
             String v = StdIn.readLine();
             if (v.equals("quit")) {
@@ -31,6 +26,15 @@ public class IndexGraph {
                 pf.reportOne(w);
             }//for
         }//while
+    }
+    
+    public static void main(String[] args) {
+        In in = new In(args[0]);
+        String delimiter = args[1];
+        Graph G = new Graph(in, delimiter);
+        String s = args[2];
+        PathFinder pf = new PathFinder(G, s);
+        findIndex(G, pf);
     }//main
     
     

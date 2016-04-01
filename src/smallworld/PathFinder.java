@@ -151,5 +151,20 @@ public class PathFinder {
         }//for
         StdOut.println("distance " + (this.distanceTo(actor) / 2));
     } // report( PathFinder, String )
+    
+    public String[] reportArray(String actor) {
+
+        List<String> actors = new ArrayList<>();
+        int i = 0;
+        for (String v : this.pathTo(actor)) {
+            actors.add(v);
+            i =+ 1;
+        }//for
+        String[] actorArray = new String[actors.size()];
+        for (int j = 0; j < actors.size(); j++) {
+            actorArray[j] = actors.get(j);
+        }
+        return actorArray;
+    } // report( PathFinder, String )
 
 } // PathFinder
