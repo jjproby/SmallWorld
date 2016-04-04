@@ -12,7 +12,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- *
+ * Creates an output for a neato file in Graphviz.
+ * Finds the shortest path, gets the adjacent vertexes to each point, and creates
+ * a graph for it. Uses graphviz to create a picture for it.
  * @author Jordan
  */
 public class ActorGraph {

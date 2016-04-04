@@ -10,7 +10,7 @@ import edu.princeton.cs.StdIn;
 import edu.princeton.cs.StdOut;
 
 /**
- *
+ * Finds the all the adjacent vertexes of a chosen vertex
  * @author Jordan
  */
 public class IndexGraph {
