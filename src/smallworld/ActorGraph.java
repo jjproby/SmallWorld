@@ -17,9 +17,6 @@ import java.util.Scanner;
  */
 public class ActorGraph {
 
-    public void connectActors(Graph graph) {
-
-    }//connectActors
 
     public static void main(String[] args) {
         In filename = new In(args[0]);
@@ -27,16 +24,27 @@ public class ActorGraph {
         Graph G = new Graph(filename, delimiter);
         String actor = args[2];
         PathFinder pf = new PathFinder(G, actor);
+        Graph BaconGraph = new Graph();
         System.out.println("Enter an actor name: ");
         Scanner name = new Scanner(System.in);
         String firstActor = name.nextLine();
         String[] actorPath = pf.reportArray(firstActor);
         System.out.println(Arrays.toString(actorPath));
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < actorPath.length - 1; i++) {
+            BaconGraph.addEdge(actorPath[i], actorPath[i + 1]);
+        }
+        for (int i = 1; i < actorPath.length; i++) {
             for (String w : G.adjacentTo(actorPath[i])) {
-                StdOut.println(" " + w);
+                if (BaconGraph.hasVertex(w) == false) {
+                    BaconGraph.addVertex(w);
+                }
+                if (BaconGraph.hasEdge(w, actorPath[i]) == false) {
+                    BaconGraph.addEdge(w, actorPath[i]);
+                }//if
             }//for
         }//for
+        //StdOut.println(BaconGraph);
+        BaconGraph.writeNeatoFile(actorPath);
 
     }//main
 }//ActorGraph

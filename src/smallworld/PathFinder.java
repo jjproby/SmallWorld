@@ -152,6 +152,12 @@ public class PathFinder {
         StdOut.println("distance " + (this.distanceTo(actor) / 2));
     } // report( PathFinder, String )
     
+    /**
+     * 
+     * @param actor The actor that is getting pathed to
+     * @return An array of the actors and movies towards that actor given to the method
+     */
+    
     public String[] reportArray(String actor) {
 
         List<String> actors = new ArrayList<>();
