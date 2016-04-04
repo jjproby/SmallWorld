@@ -180,6 +180,12 @@ public class Graph {
     
     public void writeNeatoFile(String[] startArray) {
         System.out.println("graph G {");
+        System.out.println("{node [shape=box, style=filled]");
+        for (int i = 0; i < startArray.length - 1; i++) {
+            System.out.println('"' + startArray[i] + '"');
+        }
+        System.out.println('}');
+        System.out.println("{node [shape=star, style=filled, width=.5, height=.5, color=yellow]" + '"' + "Bacon, Kevin" + '"' + '}');
         for (int i = 0; i < startArray.length-1; i++) {
             System.out.println('"' + startArray[i] + '"' + "--" + '"' + startArray[i + 1] + '"' + ";");
         }//for

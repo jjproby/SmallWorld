@@ -33,7 +33,7 @@ public class ActorGraph {
         for (int i = 0; i < actorPath.length - 1; i++) {
             BaconGraph.addEdge(actorPath[i], actorPath[i + 1]);
         }
-        for (int i = 1; i < actorPath.length; i++) {
+        for (int i = 0; i < actorPath.length - 1; i++) {
             for (String w : G.adjacentTo(actorPath[i])) {
                 if (BaconGraph.hasVertex(w) == false) {
                     BaconGraph.addVertex(w);
