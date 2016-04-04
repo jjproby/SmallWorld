@@ -29,6 +29,12 @@ public class PathFinder {
     private ST<String, Integer> dist = new ST<String, Integer>();
 
     // run BFS in graph G from given source vertex s
+    /**
+     * Finds the shortest path to an actor from every other vertex on the graph
+     * @param G The graph to look i
+     * @param s the actor that is getting pathed to
+     */
+    
     public PathFinder(Graph G, String s) {
 
         // put source on the queue
@@ -50,12 +56,18 @@ public class PathFinder {
         }
     }
 
-    // is v reachable from the source s?
+    /**
+     * is v reachable from the source s?
+     * @param v The vertex on the graph
+     **/
     public boolean hasPathTo(String v) {
         return dist.contains(v);
     }
 
-    // return the length of the shortest path from v to s
+    /**
+     * return the length of the shortest path from v to s
+     * @param v the vertex that is being checked
+     **/
     public int distanceTo(String v) {
         if (!hasPathTo(v)) {
             return Integer.MAX_VALUE;
@@ -63,7 +75,10 @@ public class PathFinder {
         return dist.get(v);
     }
 
-    // return the shortest path from v to s as an Iterable
+    /**
+     * return the shortest path from v to s as an Iterable
+     * @param v The vertex being checked
+     **/
     public Iterable<String> pathTo(String v) {
         Stack<String> path = new Stack<String>();
         while (v != null && dist.contains(v)) {

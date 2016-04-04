@@ -15,6 +15,12 @@ import edu.princeton.cs.StdOut;
  */
 public class IndexGraph {
     
+    /**
+     * Finds all the adjacent vertexes to a chosen vertex
+     * @param G The graph being used
+     * @param pf The Pathfinder being used
+     */
+    
     public static void findIndex(Graph G, PathFinder pf) {
         while (!StdIn.isEmpty()) {
             String v = StdIn.readLine();

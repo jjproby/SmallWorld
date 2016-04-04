@@ -47,6 +47,8 @@ public class Graph {
 
     /**
      * Create an graph from given input stream using given delimiter.
+     * @param in the file name
+     * @param delimiter what separates the string in the file
      */
     public Graph(In in, String delimiter) {
         st = new ST<String, SET<String>>();
@@ -74,6 +76,10 @@ public class Graph {
     }
 
     // throw an exception if v is not a vertex
+    /**
+     * Checks to see if a vertex is existing
+     * @param v the string to check if its a vertex
+     */
     private void validateVertex(String v) {
         if (!hasVertex(v)) {
             throw new IllegalArgumentException(v + " is not a vertex");
@@ -82,6 +88,7 @@ public class Graph {
 
     /**
      * Degree of this vertex.
+     * @param v The string to check what the degree is
      */
     public int degree(String v) {
         validateVertex(v);
@@ -90,6 +97,8 @@ public class Graph {
 
     /**
      * Add edge v-w to this graph (if it is not already an edge)
+     * @param v a string to add an edge with
+     * @param w another string to add an edge with
      */
     public void addEdge(String v, String w) {
         if (!hasVertex(v)) {
@@ -107,6 +116,7 @@ public class Graph {
 
     /**
      * Add vertex v to this graph (if it is not already a vertex)
+     * @param v the string to create a vertex for
      */
     public void addVertex(String v) {
         if (!hasVertex(v)) {
@@ -160,6 +170,11 @@ public class Graph {
         return s.toString();
     }
 
+    /**
+     * Creates an output that you can copy and paste to make a Dot file in graphviz
+     * 
+     */
+    
     public void writeDotFile() {
         System.out.println("digraph G {");
         for (String u : this.vertices()) {
@@ -174,7 +189,7 @@ public class Graph {
     }//writeDotFile
 
     /**
-     * 
+     * Creates an output that you can copy and paste to make a Dot file in graphviz
      * @param startArray Array of actors and movies to connect first
      */
     
