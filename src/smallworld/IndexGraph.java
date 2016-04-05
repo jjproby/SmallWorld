@@ -34,6 +34,10 @@ public class IndexGraph {
         }//while
     }
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         In in = new In(args[0]);
         String delimiter = args[1];

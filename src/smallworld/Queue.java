@@ -29,6 +29,7 @@ import java.util.NoSuchElementException;
  *  <p>
  *  For additional documentation, see <a href="http://introcs.cs.princeton.edu/43stack">Section 4.3</a> of
  *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne.
+ * @param <Item>
  */
 public class Queue<Item> implements Iterable<Item> {
     private int N;         // number of elements on queue
@@ -51,6 +52,7 @@ public class Queue<Item> implements Iterable<Item> {
 
    /**
      * Is the queue empty?
+     * @return 
      */
     public boolean isEmpty() {
         return first == null;
@@ -58,6 +60,7 @@ public class Queue<Item> implements Iterable<Item> {
 
    /**
      * Return the number of items in the queue.
+     * @return 
      */
     public int size() {
         return N;     
@@ -65,6 +68,7 @@ public class Queue<Item> implements Iterable<Item> {
 
    /**
      * Return the number of items in the queue.
+     * @return 
      */
     public int length() {
         return N;     
@@ -73,6 +77,7 @@ public class Queue<Item> implements Iterable<Item> {
    /**
      * Return the item least recently added to the queue.
      * Throw an exception if the queue is empty.
+     * @return 
      */
     public Item peek() {
         if (isEmpty()) throw new RuntimeException("Queue underflow");
@@ -81,6 +86,7 @@ public class Queue<Item> implements Iterable<Item> {
 
    /**
      * Add the item to the queue.
+     * @param item
      */
     public void enqueue(Item item) {
         Node x = new Node();
@@ -99,6 +105,7 @@ public class Queue<Item> implements Iterable<Item> {
    /**
      * Remove and return the item on the queue least recently added.
      * Throw an exception if the queue is empty.
+     * @return 
      */
     public Item dequeue() {
         if (isEmpty()) throw new RuntimeException("Queue underflow");
@@ -145,6 +152,7 @@ public class Queue<Item> implements Iterable<Item> {
 
    /**
      * A test client.
+     * @param args
      */
     public static void main(String[] args) {
         Queue<String> q = new Queue<String>();

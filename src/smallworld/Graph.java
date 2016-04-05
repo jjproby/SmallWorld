@@ -63,6 +63,7 @@ public class Graph {
 
     /**
      * Number of vertices.
+     * @return the size of the vertexes
      */
     public int V() {
         return st.size();
@@ -70,6 +71,7 @@ public class Graph {
 
     /**
      * Number of edges.
+     * @return the number of edges
      */
     public int E() {
         return E;
@@ -89,6 +91,7 @@ public class Graph {
     /**
      * Degree of this vertex.
      * @param v The string to check what the degree is
+     * @return gets the degree for the vertex
      */
     public int degree(String v) {
         validateVertex(v);
@@ -126,6 +129,7 @@ public class Graph {
 
     /**
      * Return the set of vertices as an Iterable.
+     * @return the set of vertices
      */
     public Iterable<String> vertices() {
         return st.keys();
@@ -133,6 +137,8 @@ public class Graph {
 
     /**
      * Return the set of neighbors of vertex v as an Iterable.
+     * @param v the string being checked
+     * @return the neighbors of the vertex
      */
     public Iterable<String> adjacentTo(String v) {
         validateVertex(v);
@@ -141,6 +147,8 @@ public class Graph {
 
     /**
      * Is v a vertex in this graph?
+     * @param v the string being checked
+     * @return true or false if the vertex exists
      */
     public boolean hasVertex(String v) {
         return st.contains(v);
@@ -148,6 +156,9 @@ public class Graph {
 
     /**
      * Is v-w an edge in this graph?
+     * @param v string being checked
+     * @param w string being checked
+     * @return true or false if the edge exists
      */
     public boolean hasEdge(String v, String w) {
         validateVertex(v);
@@ -157,6 +168,7 @@ public class Graph {
 
     /**
      * Return a string representation of the graph.
+     * @return 
      */
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -217,6 +229,10 @@ public class Graph {
         System.out.println("}");
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Graph G = new Graph();
         G.addEdge("A", "B");

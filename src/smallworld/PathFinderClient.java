@@ -41,6 +41,12 @@ public class PathFinderClient {
     private ST<String, Integer> dist = new ST<String, Integer>();
 
     // run BFS in graph G from given source vertex s
+
+    /**
+     *
+     * @param G
+     * @param s
+     */
     public PathFinderClient(Graph G, String s) {
 
         // put source on the queue
@@ -63,17 +69,35 @@ public class PathFinderClient {
     }
 
     // is v reachable from the source s?
+
+    /**
+     *
+     * @param v
+     * @return
+     */
     public boolean hasPathTo(String v) {
         return dist.contains(v);
     }
 
     // return the length of the shortest path from v to s
+
+    /**
+     *
+     * @param v
+     * @return
+     */
     public int distanceTo(String v) {
         if (!hasPathTo(v)) return Integer.MAX_VALUE;
         return dist.get(v);
     }
 
     // return the shortest path from v to s as an Iterable
+
+    /**
+     *
+     * @param v
+     * @return
+     */
     public Iterable<String> pathTo(String v) {
         Stack<String> path = new Stack<String>();
         while (v != null && dist.contains(v)) {
@@ -83,7 +107,10 @@ public class PathFinderClient {
         return path;
     }
 
-
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         String filename  = args[0];
         String delimiter = args[1];

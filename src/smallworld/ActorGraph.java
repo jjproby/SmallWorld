@@ -19,7 +19,10 @@ import java.util.Scanner;
  */
 public class ActorGraph {
 
-
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         In filename = new In(args[0]);
         String delimiter = args[1];

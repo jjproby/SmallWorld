@@ -45,6 +45,8 @@ import java.util.TreeMap;
  *  <p>
  *  For additional documentation, see <a href="http://introcs.cs.princeton.edu/44st">Section 4.4</a> of
  *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne. 
+ * @param <Key>
+ * @param <Value>
  */
 public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 
@@ -195,6 +197,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 
     /**
      * Unit tests the <tt>ST</tt> data type.
+     * @param args
      */
     public static void main(String[] args) {
         ST<String, String> st = new ST<String, String>();

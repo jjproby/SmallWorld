@@ -59,6 +59,7 @@ public class PathFinder {
     /**
      * is v reachable from the source s?
      * @param v The vertex on the graph
+     * @return true or false if the  path exists
      **/
     public boolean hasPathTo(String v) {
         return dist.contains(v);
@@ -67,6 +68,7 @@ public class PathFinder {
     /**
      * return the length of the shortest path from v to s
      * @param v the vertex that is being checked
+     * @return the distance from one actor to the other
      **/
     public int distanceTo(String v) {
         if (!hasPathTo(v)) {
@@ -78,6 +80,7 @@ public class PathFinder {
     /**
      * return the shortest path from v to s as an Iterable
      * @param v The vertex being checked
+     * @return the shortest path to the actor
      **/
     public Iterable<String> pathTo(String v) {
         Stack<String> path = new Stack<String>();
@@ -88,6 +91,10 @@ public class PathFinder {
         return path;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         String filename = "movies.txt";
         String delimiter = "/";
